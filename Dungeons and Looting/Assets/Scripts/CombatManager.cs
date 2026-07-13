@@ -47,10 +47,21 @@ public class CombatManager : MonoBehaviour
 
                 StateManager.instance.ChangeState(StateManager.GameState.HasEquipped2); // or your unequipped state
             }
+            
         }
-    
-        
-        
+        if (equipped != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                Attack();
+            }
+        }
+    }
+
+    public void Attack()
+    {
+        print("attack lol");
         
     }
+
 }
