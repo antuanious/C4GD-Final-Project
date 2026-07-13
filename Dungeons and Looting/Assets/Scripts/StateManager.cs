@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatManager : MonoBehaviour
+public class StateManager : MonoBehaviour
 {
-    public Dictionary<GameObject, int> weapons;
-    public int ownedWeaponsIndex
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +13,6 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            
-        }
+        
     }
 }
