@@ -1,144 +1,102 @@
-using System;
-using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-// I DONT HAVE A DANG CLUE HOW THIS WORKS DONT ASK ME
+
 public class HitboxHandler : MonoBehaviour
 {
-    private const float DefaultDamage = 1f;
+    public float damageAmount = 10f;
+    public float damageDelay = 0.4f;
 
-    private static readonly string[] DamageFieldNames =
+    private readonly Dictionary<Collider2D, Coroutine> damageCoroutines =
+        new Dictionary<Collider2D, Coroutine>();
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        "damage",
-        "Damage",
-        "attackDamage",
-        "AttackDamage"
-    };
+        Debug.Log("Something entered the hitbox.");
 
-    private bool hasHitPlayer;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player") || hasHitPlayer)
+        if (!other.CompareTag("Player"))
+        {
             return;
+        }
 
-        hasHitPlayer = true;
+        // Do not start another timer for the same collider.
+        if (damageCoroutines.ContainsKey(other))
+        {
+            return;
+        }
 
-        float damage = FindDamageValue();
+        Coroutine damageCoroutine =
+            StartCoroutine(DelayedDamageCoroutine(other));
 
-        TryInvokeTakeDamage(collision.gameObject, damage);
+        damageCoroutines.Add(other, damageCoroutine);
     }
 
-    private float FindDamageValue()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        Component[] components = GetComponentsInParent<Component>(true);
-
-        foreach (Component component in components)
+        if (!damageCoroutines.TryGetValue(other, out Coroutine damageCoroutine))
         {
-            if (component == null)
-                continue;
-
-            Type componentType = component.GetType();
-
-            BindingFlags flags =
-                BindingFlags.Instance |
-                BindingFlags.Public |
-                BindingFlags.NonPublic |
-                BindingFlags.FlattenHierarchy;
-
-            foreach (string fieldName in DamageFieldNames)
-            {
-                FieldInfo field = componentType.GetField(fieldName, flags);
-
-                if (field == null)
-                    continue;
-
-                object value = field.GetValue(component);
-
-                if (TryConvertToFloat(value, out float damage))
-                    return damage;
-            }
-
-            foreach (string propertyName in DamageFieldNames)
-            {
-                PropertyInfo property =
-                    componentType.GetProperty(propertyName, flags);
-
-                if (property == null || property.GetGetMethod(true) == null)
-                    continue;
-
-                object value = property.GetValue(component);
-
-                if (TryConvertToFloat(value, out float damage))
-                    return damage;
-            }
+            return;
         }
 
-        return DefaultDamage;
+        if (damageCoroutine != null)
+        {
+            StopCoroutine(damageCoroutine);
+        }
+
+        damageCoroutines.Remove(other);
     }
 
-    private static bool TryConvertToFloat(object value, out float result)
+    private IEnumerator DelayedDamageCoroutine(Collider2D target)
     {
-        result = 0f;
+        yield return new WaitForSeconds(damageDelay);
 
-        if (value == null)
-            return false;
+        // The target may have been destroyed during the delay.
+        if (target == null)
+        {
+            yield break;
+        }
 
-        try
+        // Confirm that the timer was not cancelled by OnTriggerExit2D.
+        if (!damageCoroutines.ContainsKey(target))
         {
-            result = Convert.ToSingle(value);
-            return true;
+            yield break;
         }
-        catch
-        {
-            return false;
-        }
+
+        ApplyDamageToTarget(target, damageAmount);
+
+        Debug.Log("Delayed damage coroutine finished.");
+
+        damageCoroutines.Remove(target);
     }
 
-    private static void TryInvokeTakeDamage(GameObject player, float damage)
+    private void ApplyDamageToTarget(Collider2D target, float amount)
     {
-        Component[] components = player.GetComponents<Component>();
-
-        foreach (Component component in components)
+        if (target == null)
         {
-            if (component == null)
-                continue;
-
-            MethodInfo method = component.GetType().GetMethod(
-                "TakeDamage",
-                BindingFlags.Instance |
-                BindingFlags.Public |
-                BindingFlags.NonPublic
-            );
-
-            if (method == null)
-                continue;
-
-            ParameterInfo[] parameters = method.GetParameters();
-
-            if (parameters.Length != 1)
-                continue;
-
-            try
-            {
-                object convertedDamage =
-                    Convert.ChangeType(damage, parameters[0].ParameterType);
-
-                method.Invoke(component, new[] { convertedDamage });
-                return;
-            }
-            catch
-            {
-                // Try the next component.
-            }
+            return;
         }
 
-        Debug.LogWarning(
-            $"No compatible TakeDamage method was found on {player.name}."
+        float defense = PlayerData.plrdef;
+        float effectiveDamage = Mathf.Max(0f, amount - defense);
+
+        PlayerData.plrHp =
+            Mathf.Max(0f, PlayerData.plrHp - effectiveDamage);
+
+        Debug.Log(
+            $"Applied {effectiveDamage} damage. Player HP: {PlayerData.plrHp}"
         );
     }
 
     private void OnDisable()
     {
-        hasHitPlayer = false;
+        foreach (Coroutine damageCoroutine in damageCoroutines.Values)
+        {
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+            }
+        }
+
+        damageCoroutines.Clear();
     }
 }

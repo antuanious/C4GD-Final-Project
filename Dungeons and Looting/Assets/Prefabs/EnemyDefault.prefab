@@ -166,3 +166,6 @@ MonoBehaviour:
   enemy: {fileID: 2443453493379040332}
   enemies1: []
   rotationOffset: 0
+  hitboxPrefab: {fileID: 1726190821319186138, guid: 07dd23774e949e04d90d0cd957e8775e, type: 3}
+  attackInterval: 1
+  hitboxLifetime: 0.5
