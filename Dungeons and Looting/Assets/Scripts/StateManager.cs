@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // I HATE MY LIFE
     public static StateManager instance;
     public enum GameState
     {
