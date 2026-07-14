@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!1045 &1
-EditorBuildSettings:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/fart.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Main_Menu.unity
-    guid: bf6d4b9fc5a7ef149be4e2aa2fe32363
-  - enabled: 1
-    path: Assets/Scenes/Secondary_Menu.unity
-    guid: ac26a76f42f1e2c4281f2308c4602da4
-  - enabled: 1
-    path: Assets/Scenes/Levels_Menu.unity
-    guid: eaf87be631eb5a34788c43a8c27f9dc4
-  m_configObjects: {}
+version https://git-lfs.github.com/spec/v1
+oid sha256:769a55638134d933392ab2466a3c9811ea215b4c0cd388d1e1c7136146d315fa
+size 551
