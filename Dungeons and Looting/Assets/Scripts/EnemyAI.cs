@@ -6,10 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
     // Movement and existing fields
     public Rigidbody2D rb;
-    public float speed = 2f;
-    public GameObject enemy;
-    public Dictionary<int, EnemyData> enemies = new Dictionary<int, EnemyData>();
-    public GameObject[] enemies1;
+    public EnemyData enemy;
 
     public float rotationOffset = 0f;
 
@@ -22,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemy = GetComponent<EnemyData>();
         attackTimer = 0f;
     }
 
@@ -31,7 +29,7 @@ public class EnemyAI : MonoBehaviour
         if (PlayerManager.instance != null)
         {
             Vector2 dir = (Vector2)PlayerManager.instance.transform.position - (Vector2)transform.position;
-            rb.velocity = dir.normalized * speed;
+            rb.velocity = dir.normalized * enemy.speed;
 
             // Make the enemy face the player:
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

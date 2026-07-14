@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
+    public static CombatManager instance;
     public GameObject plr;
     public Dictionary<int, WeaponData> weapons = new Dictionary<int, WeaponData>();
     public GameObject[] weapons1;
@@ -16,6 +17,12 @@ public class CombatManager : MonoBehaviour
     public Vector2 rightHandOffset = new Vector2(0.25f, 0f);
     public Vector2 leftHandOffset = new Vector2(-0.25f, 0f);
     public SpriteRenderer playerSprite;
+    public float currentWeaponDamage = 0f;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
 
@@ -47,9 +54,9 @@ public class CombatManager : MonoBehaviour
                 equipped.transform.localPosition = Vector3.zero;
                 equipped.transform.localRotation = Quaternion.identity;
 
-
-                Debug.Log(weapon.damage);
-                Debug.Log(weapon.attackSpeed);
+                currentWeaponDamage = weapon.damage;
+                //Debug.Log(weapon.damage);
+                //Debug.Log(weapon.attackSpeed);
             }
             else
             {

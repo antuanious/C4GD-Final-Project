@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class HitboxHandler : MonoBehaviour
 {
-    public float damageAmount = 10f;
+    public GameObject enemy1;
+    public EnemyData enemy;
     public float damageDelay = 0.4f;
-
+    private void Start()
+    {
+        enemy = enemy1.GetComponent<EnemyData>();
+        
+    }
     private readonly Dictionary<Collider2D, Coroutine> damageCoroutines =
         new Dictionary<Collider2D, Coroutine>();
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
         Debug.Log("Something entered the hitbox.");
 
         if (!other.CompareTag("Player"))
@@ -62,29 +68,34 @@ public class HitboxHandler : MonoBehaviour
             yield break;
         }
 
-        ApplyDamageToTarget(target, damageAmount);
-
+        StartCoroutine(ApplyDamageToTarget(target, enemy.damage));
         Debug.Log("Delayed damage coroutine finished.");
 
         damageCoroutines.Remove(target);
     }
-
-    private void ApplyDamageToTarget(Collider2D target, float amount)
+    bool isTakingDmg = false;
+    private IEnumerator ApplyDamageToTarget(Collider2D target, float amount)
     {
-        if (target == null)
+
+        if (target == null || isTakingDmg)
         {
-            return;
+            yield return null;
         }
+        else
+        {
+            isTakingDmg = true;
+            float defense = PlayerData.plrdef;
+            float effectiveDamage = Mathf.Max(0f, amount - defense);
 
-        float defense = PlayerData.plrdef;
-        float effectiveDamage = Mathf.Max(0f, amount - defense);
+            PlayerData.plrHp =
+                Mathf.Max(0f, PlayerData.plrHp - effectiveDamage);
 
-        PlayerData.plrHp =
-            Mathf.Max(0f, PlayerData.plrHp - effectiveDamage);
-
-        Debug.Log(
-            $"Applied {effectiveDamage} damage. Player HP: {PlayerData.plrHp}"
-        );
+            Debug.Log(
+                $"Applied {effectiveDamage} damage. Player HP: {PlayerData.plrHp}"
+            );
+            yield return new WaitForSeconds(0.4f);
+            isTakingDmg = false;
+        }
     }
 
     private void OnDisable()

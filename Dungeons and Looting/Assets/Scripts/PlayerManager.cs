@@ -18,10 +18,19 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float HorizontalInput = Input.GetAxisRaw("Horizontal");
-        float VerticalInput = Input.GetAxisRaw("Vertical"); 
-        Vector2 inputDir = new Vector2 (HorizontalInput, VerticalInput).normalized;
-        rb.velocity = inputDir.normalized*speed;
+        if(plr != null)
+        {
+            float HorizontalInput = Input.GetAxisRaw("Horizontal");
+            float VerticalInput = Input.GetAxisRaw("Vertical");
+            Vector2 inputDir = new Vector2(HorizontalInput, VerticalInput).normalized;
+            rb.velocity = inputDir.normalized * speed;
+        }
+        if(PlayerData.plrHp <= 0)
+        {
+            Destroy(plr);
+        }
+
+        
     }
 
 

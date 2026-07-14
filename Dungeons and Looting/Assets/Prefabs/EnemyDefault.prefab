@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4606291932658584932}
   - component: {fileID: 2915607583006146783}
   - component: {fileID: 7530323116037849955}
+  - component: {fileID: -4707058816258823880}
   m_Layer: 0
   m_Name: EnemyDefault
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,11 +162,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bb3119cf2a78b47991f67a4d3e966c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  speed: 2
-  enemy: {fileID: 2443453493379040332}
-  enemies1: []
+  rb: {fileID: 2915607583006146783}
+  enemy: {fileID: -4707058816258823880}
   rotationOffset: 0
   hitboxPrefab: {fileID: 1726190821319186138, guid: 07dd23774e949e04d90d0cd957e8775e, type: 3}
   attackInterval: 1
   hitboxLifetime: 0.5
+--- !u!114 &-4707058816258823880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2443453493379040332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cc95e3f7738fb48a45a9e04efa919b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Default
+  enemyHealth: 100
+  speed: 2
+  enemyAttackRate: 0.5
+  damage: 25
