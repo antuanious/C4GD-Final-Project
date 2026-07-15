@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
         if(PlayerData.plrHp <= 0)
         {
             Destroy(plr);
+            GameUIHandler.instance.EnableEndScreen();
         }
 
         
