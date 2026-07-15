@@ -169,3 +169,24 @@ MonoBehaviour:
   hitboxPrefab: {fileID: 1726190821319186138, guid: 07dd23774e949e04d90d0cd957e8775e, type: 3}
   attackInterval: 1
   hitboxLifetime: 0.5
+<<<<<<< Updated upstream
+=======
+--- !u!114 &-4707058816258823880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2443453493379040332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cc95e3f7738fb48a45a9e04efa919b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Default
+  enemyHealth: 100
+  enemyMaxHealth: 100
+  speed: 2
+  enemyAttackRate: 0.5
+  damage: 25
+>>>>>>> Stashed changes

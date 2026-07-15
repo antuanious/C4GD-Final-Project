@@ -15,13 +15,8 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //this is just a placeholder for spawning, will rework later
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            // Instantiate enemy
-            GameObject enemy = Instantiate(enemyPrefab);
-            
-        }
+        
     }
+
+    
 }
