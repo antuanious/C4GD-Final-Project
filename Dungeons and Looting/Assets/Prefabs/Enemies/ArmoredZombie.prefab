@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7530323116037849955}
   - component: {fileID: -4707058816258823880}
   m_Layer: 0
-  m_Name: EnemyDefault
+  m_Name: ArmoredZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   hitboxPrefab: {fileID: 1726190821319186138, guid: 07dd23774e949e04d90d0cd957e8775e, type: 3}
   attackInterval: 1
   hitboxLifetime: 0.5
+  isFinalBoss: 0
 --- !u!114 &-4707058816258823880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63cc95e3f7738fb48a45a9e04efa919b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Default
-  enemyHealth: 100
-  speed: 2
-  enemyAttackRate: 0.5
-  damage: 25
+  enemyName: ArmoredZombie
+  enemyHealth: 175
+  speed: 0.75
+  enemyAttackRate: 3
+  damage: 15

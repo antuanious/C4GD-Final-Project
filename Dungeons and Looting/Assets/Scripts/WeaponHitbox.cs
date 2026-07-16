@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class WeaponHitbox : MonoBehaviour
 {
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (CombatManager.instance.attacking)
@@ -14,6 +13,7 @@ public class WeaponHitbox : MonoBehaviour
                 print(collision.GetComponent<EnemyData>().enemyHealth);
             }
         }
-        
     }
+
+    
 }

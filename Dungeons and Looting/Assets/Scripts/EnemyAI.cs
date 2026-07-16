@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     public float attackInterval = 1f;    // seconds between attacks
     public float hitboxLifetime = 0.5f;  // seconds before the spawned hitbox is auto-destroyed
     private float attackTimer = 0f;
+    public bool isFinalBoss = false;
 
     void Start()
     {
@@ -42,6 +43,11 @@ public class EnemyAI : MonoBehaviour
         {
             SpawnHitbox();
             attackTimer = 0f;
+        }
+
+        if (isFinalBoss)
+        {
+            GameUIHandler.instance.EnableEndScreen();
         }
     }
 

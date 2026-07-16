@@ -18,6 +18,7 @@ public class CombatManager : MonoBehaviour
     public Vector2 leftHandOffset = new Vector2(-0.25f, 0f);
     public SpriteRenderer playerSprite;
     public float currentWeaponDamage = 0f;
+    public int bestWeaponID = 0;
 
     private void Awake()
     {
@@ -29,11 +30,137 @@ public class CombatManager : MonoBehaviour
 
         weapons.Add(0, new WeaponData()
         {
-            weaponName = "DefaultSword",
+            weaponName = "KnightSword",
             prefab = weapons1[0],
             damage = 25,
-            attackSpeed = 0.4f,
+            attackSpeed = 0.8f,
             range = 1.5f,
+        });
+
+        weapons.Add(1, new WeaponData()
+        {
+            weaponName = "DesertDagger",
+            prefab = weapons1[1],
+            damage = 15,
+            attackSpeed = 0.4f,
+            range = 0.9f,
+        });
+
+        weapons.Add(2, new WeaponData()
+        {
+            weaponName = "AssassinDagger",
+            prefab = weapons1[2],
+            damage = 15,
+            attackSpeed = 0.35f,
+            range = 1.0f,
+        });
+
+        weapons.Add(3, new WeaponData()
+        {
+            weaponName = "BronzeLongsword",
+            prefab = weapons1[3],
+            damage = 28,
+            attackSpeed = 0.75f,
+            range = 1.5f,
+        });
+
+        weapons.Add(4, new WeaponData()
+        {
+            weaponName = "CrimsonSword",
+            prefab = weapons1[4],
+            damage = 34,
+            attackSpeed = 0.7f,
+            range = 1.6f,
+        });
+
+        weapons.Add(5, new WeaponData()
+        {
+            weaponName = "PirateCutlass",
+            prefab = weapons1[5],
+            damage = 32,
+            attackSpeed = 0.55f,
+            range = 1.4f,
+        });
+
+        weapons.Add(6, new WeaponData()
+        {
+            weaponName = "NomadScimitar",
+            prefab = weapons1[6],
+            damage = 34,
+            attackSpeed = 0.6f,
+            range = 1.7f,
+        });
+
+        weapons.Add(7, new WeaponData()
+        {
+            weaponName = "GoldenSaber",
+            prefab = weapons1[7],
+            damage = 50,
+            attackSpeed = 0.65f,
+            range = 1.6f,
+        });
+
+        weapons.Add(8, new WeaponData()
+        {
+            weaponName = "SerpentBlade",
+            prefab = weapons1[8],
+            damage = 50,
+            attackSpeed = 0.7f,
+            range = 1.8f,
+        });
+
+        weapons.Add(9, new WeaponData()
+        {
+            weaponName = "IronSword",
+            prefab = weapons1[9],
+            damage = 52,
+            attackSpeed = 0.8f,
+            range = 1.8f,
+        });
+
+        weapons.Add(10, new WeaponData()
+        {
+            weaponName = "SteelLongsword",
+            prefab = weapons1[10],
+            damage = 55,
+            attackSpeed = 0.95f,
+            range = 2.0f,
+        });
+
+        weapons.Add(11, new WeaponData()
+        {
+            weaponName = "DarkKatana",
+            prefab = weapons1[11],
+            damage = 49,
+            attackSpeed = 0.45f,
+            range = 1.7f,
+        });
+
+        weapons.Add(12, new WeaponData()
+        {
+            weaponName = "CrescentSaber",
+            prefab = weapons1[12],
+            damage = 50,
+            attackSpeed = 0.6f,
+            range = 1.9f,
+        });
+
+        weapons.Add(13, new WeaponData()
+        {
+            weaponName = "RoyalSaber",
+            prefab = weapons1[13],
+            damage = 55,
+            attackSpeed = 0.65f,
+            range = 1.8f,
+        });
+
+        weapons.Add(14, new WeaponData()
+        {
+            weaponName = "ExecutionersGreatsword",
+            prefab = weapons1[14],
+            damage = 125,
+            attackSpeed = 2.0f,
+            range = 2.4f,
         });
 
 
@@ -46,24 +173,20 @@ public class CombatManager : MonoBehaviour
         {
             if (equipped == null)
             {
-                StateManager.instance.ChangeState(StateManager.GameState.HasEquipped1);
+                StateManager.instance.ChangeState(
+                    StateManager.GameState.HasEquipped1
+                );
 
-                WeaponData weapon = weapons[0];
-                equipped = Instantiate(weapon.prefab, weaponPivot);
-
-                equipped.transform.localPosition = Vector3.zero;
-                equipped.transform.localRotation = Quaternion.identity;
-
-                currentWeaponDamage = weapon.damage;
-                //Debug.Log(weapon.damage);
-                //Debug.Log(weapon.attackSpeed);
+                EquipBestWeapon();
             }
             else
             {
                 Destroy(equipped);
                 equipped = null;
 
-                StateManager.instance.ChangeState(StateManager.GameState.HasEquipped2);
+                StateManager.instance.ChangeState(
+                    StateManager.GameState.HasEquipped2
+                );
             }
         }
 
@@ -113,7 +236,7 @@ public class CombatManager : MonoBehaviour
     {
         attacking = true;
 
-        WeaponData weapon = weapons[0];
+        WeaponData weapon = weapons[bestWeaponID];
 
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouse.z = 0f;
@@ -181,5 +304,75 @@ public class CombatManager : MonoBehaviour
 
         attacking = false;
     }
+    public void CheckAndUpgradeWeapon(string newWeaponName)
+    {
+        int newWeaponID = -1;
 
+        // Find the weapon ID using its name
+        foreach (KeyValuePair<int, WeaponData> entry in weapons)
+        {
+            if (entry.Value.weaponName == newWeaponName)
+            {
+                newWeaponID = entry.Key;
+                break;
+            }
+        }
+
+        if (newWeaponID == -1)
+        {
+            Debug.LogWarning("Weapon not found: " + newWeaponName);
+            return;
+        }
+
+        WeaponData currentWeapon = weapons[bestWeaponID];
+        WeaponData newWeapon = weapons[newWeaponID];
+
+        float currentDPS = currentWeapon.damage / currentWeapon.attackSpeed;
+        float newDPS = newWeapon.damage / newWeapon.attackSpeed;
+
+        if (newDPS > currentDPS)
+        {
+            bestWeaponID = newWeaponID;
+
+            Debug.Log(
+                $"Upgraded from {currentWeapon.weaponName} " +
+                $"to {newWeapon.weaponName}. New weapon ID: {bestWeaponID}"
+            );
+
+            EquipBestWeapon();
+        }
+        else
+        {
+            Debug.Log(
+                $"{newWeapon.weaponName} is not better than " +
+                $"{currentWeapon.weaponName}."
+            );
+        }
+    }
+
+
+    public void EquipBestWeapon()
+    {
+        if (!weapons.ContainsKey(bestWeaponID))
+        {
+            Debug.LogWarning("Invalid bestWeaponID: " + bestWeaponID);
+            return;
+        }
+
+        if (equipped != null)
+        {
+            Destroy(equipped);
+        }
+
+        WeaponData weapon = weapons[bestWeaponID];
+
+        equipped = Instantiate(weapon.prefab, weaponPivot);
+
+        equipped.transform.localPosition = Vector3.zero;
+        equipped.transform.localRotation = Quaternion.identity;
+
+        currentWeaponDamage = weapon.damage;
+
+        Debug.Log("Equipped: " + weapon.weaponName);
+    }
 }
