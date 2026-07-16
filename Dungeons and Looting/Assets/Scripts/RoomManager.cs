@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class RoomSpawns : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class RoomSpawns : MonoBehaviour
     public float edgePadding = 0.5f;
 
     private bool hasEnteredPreviously;
-
+    public Canvas HealthBar;
     public void SpawnInRoom(GameObject targetRoom, GameObject enemy)
     {
         if (targetRoom == null || enemy == null)
@@ -24,11 +26,7 @@ public class RoomSpawns : MonoBehaviour
 
         Bounds roomBounds = GetBounds(targetRoom);
 
-        if (roomBounds.size == Vector3.zero)
-        {
-            Instantiate(enemy, targetRoom.transform.position, Quaternion.identity);
-            return;
-        }
+        
 
         float minX = roomBounds.min.x + edgePadding;
         float maxX = roomBounds.max.x - edgePadding;
@@ -53,7 +51,13 @@ public class RoomSpawns : MonoBehaviour
             targetRoom.transform.position.z
         );
 
-        Instantiate(enemy, spawnPosition, Quaternion.identity);
+        GameObject q2 = Instantiate(enemy, spawnPosition, Quaternion.identity);
+
+        Canvas p2 = Instantiate(HealthBar, q2.transform.position, Quaternion.identity);
+
+        HealthBarFollow follow = p2.GetComponent<HealthBarFollow>();
+        follow.target = q2.transform;
+        
     }
 
     private Bounds GetBounds(GameObject obj)

@@ -1,6 +1,8 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     public GameObject plr;
     public float speed = 5f;
+    public Image HealthBar;
     Rigidbody2D rb;
     void Start()
     {
@@ -18,6 +21,9 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        HealthBar.rectTransform.sizeDelta = new Vector2(PlayerData.plrHp, 10);
+        
         if(plr != null)
         {
             float HorizontalInput = Input.GetAxisRaw("Horizontal");

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HitboxHandler : MonoBehaviour
 {
     public GameObject enemy1;
@@ -11,7 +12,9 @@ public class HitboxHandler : MonoBehaviour
     {
         enemy = enemy1.GetComponent<EnemyData>();
         
+        //damageDelay = enemy.enemyAttackRate - 0.1f;
     }
+
     private readonly Dictionary<Collider2D, Coroutine> damageCoroutines =
         new Dictionary<Collider2D, Coroutine>();
 
@@ -35,6 +38,7 @@ public class HitboxHandler : MonoBehaviour
             StartCoroutine(DelayedDamageCoroutine(other));
 
         damageCoroutines.Add(other, damageCoroutine);
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)

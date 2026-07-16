@@ -13,6 +13,7 @@ public class GameUIHandler : MonoBehaviour
 
     void Start()
     {
+        PlayerData.plrHp = 100;
         instance = this;
         endScreen.SetActive(false);
         mainMenuButton.onClick.AddListener(MainMenuReturn);
@@ -36,6 +37,8 @@ public class GameUIHandler : MonoBehaviour
 
     public void RestartScene()
     {
+        endScreen.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerData.plrHp = 100;
     }
 }
