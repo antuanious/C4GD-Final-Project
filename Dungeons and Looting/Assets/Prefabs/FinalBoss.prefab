@@ -169,7 +169,7 @@ MonoBehaviour:
   hitboxPrefab: {fileID: 1726190821319186138, guid: 07dd23774e949e04d90d0cd957e8775e, type: 3}
   attackInterval: 1
   hitboxLifetime: 0.5
-  isFinalBoss: 0
+  isFinalBoss: 1
 --- !u!114 &-4707058816258823880
 MonoBehaviour:
   m_ObjectHideFlags: 0
