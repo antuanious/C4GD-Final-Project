@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject plr;
     public float speed = 5f;
     public Image HealthBar;
+
+    public float speeed;
     Rigidbody2D rb;
     void Start()
     {
@@ -30,6 +32,7 @@ public class PlayerManager : MonoBehaviour
             float VerticalInput = Input.GetAxisRaw("Vertical");
             Vector2 inputDir = new Vector2(HorizontalInput, VerticalInput).normalized;
             rb.velocity = inputDir.normalized * speed;
+            speeed = Mathf.Abs(HorizontalInput) + Mathf.Abs(VerticalInput);
         }
         if(PlayerData.plrHp <= 0)
         {

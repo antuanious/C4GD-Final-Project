@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2915607583006146783}
   - component: {fileID: 7530323116037849955}
   - component: {fileID: -4707058816258823880}
+  - component: {fileID: 1708438314353331517}
   m_Layer: 0
   m_Name: MiniBoss
   m_TagString: Enemy
@@ -186,3 +187,24 @@ MonoBehaviour:
   speed: 0.25
   enemyAttackRate: 4.5
   damage: 25
+--- !u!95 &1708438314353331517
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2443453493379040332}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0cd51b32e3e667b408a68359292ee030, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

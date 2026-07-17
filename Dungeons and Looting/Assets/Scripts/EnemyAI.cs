@@ -17,11 +17,14 @@ public class EnemyAI : MonoBehaviour
     private float attackTimer = 0f;
     public bool isFinalBoss = false;
 
+    Animator anim;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         enemy = GetComponent<EnemyData>();
         attackTimer = 0f;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class EnemyAI : MonoBehaviour
         {
             SpawnHitbox();
             attackTimer = 0f;
+            anim.SetBool("Attack", true);
         }
 
         if (isFinalBoss)
