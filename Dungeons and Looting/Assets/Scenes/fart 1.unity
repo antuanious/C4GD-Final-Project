@@ -641,6 +641,7 @@ MonoBehaviour:
   numToSpawn: 3
   edgePadding: 0.5
   HealthBar: {fileID: 7711450398960081246, guid: 9618c6cb99189be4a813e1378e80046a, type: 3}
+  bossDead: 0
 --- !u!212 &257051890
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6077,6 +6078,8 @@ MonoBehaviour:
   endScreen: {fileID: 2078037583}
   mainMenuButton: {fileID: 2011478554}
   respawnButton: {fileID: 999028401}
+  level: 0
+  hasComp: 0
 --- !u!1 &1606326288
 GameObject:
   m_ObjectHideFlags: 0
@@ -6114,6 +6117,7 @@ MonoBehaviour:
   numToSpawn: 3
   edgePadding: 0.5
   HealthBar: {fileID: 7711450398960081246, guid: 9618c6cb99189be4a813e1378e80046a, type: 3}
+  bossDead: 0
 --- !u!212 &1606326290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21248,6 +21252,7 @@ MonoBehaviour:
   numToSpawn: 1
   edgePadding: 0.5
   HealthBar: {fileID: 7711450398960081246, guid: 9618c6cb99189be4a813e1378e80046a, type: 3}
+  bossDead: 0
 --- !u!212 &1901394180
 SpriteRenderer:
   m_ObjectHideFlags: 0
