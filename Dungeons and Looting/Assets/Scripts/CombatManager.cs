@@ -213,6 +213,15 @@ public class CombatManager : MonoBehaviour
 
             playerSprite.flipX = !facingRight;
 
+            // Flip weapon orientation horizontally when facing right
+            if (equipped != null)
+            {
+                Vector3 eqScale = equipped.transform.localScale;
+                float baseX = Mathf.Abs(eqScale.x);
+                eqScale.x = facingRight ? -baseX : baseX;
+                equipped.transform.localScale = eqScale;
+            }
+
             Vector2 dir =
                 ((Vector2)mouse - (Vector2)weaponPivot.position).normalized;
 
@@ -248,6 +257,15 @@ public class CombatManager : MonoBehaviour
             : leftHandOffset;
 
         playerSprite.flipX = !facingRight;
+
+        // Ensure weapon flips during swing too
+        if (equipped != null)
+        {
+            Vector3 eqScale = equipped.transform.localScale;
+            float baseX = Mathf.Abs(eqScale.x);
+            eqScale.x = facingRight ? -baseX : baseX;
+            equipped.transform.localScale = eqScale;
+        }
 
         Vector2 dir =
             ((Vector2)mouse - (Vector2)weaponPivot.position).normalized;
@@ -370,6 +388,22 @@ public class CombatManager : MonoBehaviour
 
         equipped.transform.localPosition = Vector3.zero;
         equipped.transform.localRotation = Quaternion.identity;
+
+        // Set initial orientation based on current mouse/player facing
+        if (Camera.main != null && plr != null)
+        {
+            Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouse.z = 0f;
+            bool facingRight = mouse.x >= plr.transform.position.x;
+
+            Vector3 eqScale = equipped.transform.localScale;
+            float baseX = Mathf.Abs(eqScale.x);
+            eqScale.x = facingRight ? -baseX : baseX;
+            equipped.transform.localScale = eqScale;
+
+            weaponPivot.localPosition = facingRight ? rightHandOffset : leftHandOffset;
+            playerSprite.flipX = !facingRight;
+        }
 
         currentWeaponDamage = weapon.damage;
 
