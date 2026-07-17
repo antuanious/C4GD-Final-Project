@@ -143,6 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52287b926d138e842876a15ebe941d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy1: {fileID: 2443453493379040332, guid: 227cca3d76c9bcf4a8612bd6d260519d, type: 3}
+  enemy1: {fileID: 0}
   enemy: {fileID: 0}
   damageDelay: 0.4

@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     public EnemyData enemy;
 
     public float rotationOffset = 0f;
-
+    public GameObject Enemy;
     // Attack / hitbox fields
     public GameObject hitboxPrefab;      // assign a hitbox prefab in the Inspector
     public float attackInterval = 1f;    // seconds between attacks
@@ -66,6 +66,10 @@ public class EnemyAI : MonoBehaviour
         Vector3 spawnPos = transform.position + forward * offsetDistance;
 
         GameObject hitbox = Instantiate(hitboxPrefab, spawnPos, transform.rotation);
+
+        HitboxHandler x = hitbox.GetComponent<HitboxHandler>();
+        //x.target1 = Enemy.transform;
+        x.enemy = Enemy.GetComponent<EnemyData>();
         if (hitboxLifetime > 0f)
         {
             Destroy(hitbox, hitboxLifetime);

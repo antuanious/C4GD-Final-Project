@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class HitboxHandler : MonoBehaviour
 {
-    public GameObject enemy1;
+    public Transform target1;
+    //public GameObject enemy1;
     public EnemyData enemy;
     public float damageDelay = 0.4f;
     private void Start()
     {
-        enemy = enemy1.GetComponent<EnemyData>();
+        //enemy1 = 
+        //enemy = 
         
         //damageDelay = enemy.enemyAttackRate - 0.1f;
     }
