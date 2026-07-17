@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63cc95e3f7738fb48a45a9e04efa919b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: CLavaGoo
+  enemyName: BigGoo
   enemyHealth: 2000
   speed: 0.25
   enemyAttackRate: 1.2

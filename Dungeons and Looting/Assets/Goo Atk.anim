@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Goo Run
+  m_Name: Goo Atk
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1355116269, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+      value: {fileID: 954442646, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
     - time: 0.33333334
-      value: {fileID: 1639900296, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+      value: {fileID: -1683639341, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
     - time: 0.6666667
-      value: {fileID: 798308214, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+      value: {fileID: -1793498607, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
     - time: 1
-      value: {fileID: 559553053, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+      value: {fileID: -1508723344, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1355116269, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
-    - {fileID: 1639900296, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
-    - {fileID: 798308214, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
-    - {fileID: 559553053, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+    - {fileID: 954442646, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+    - {fileID: -1683639341, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+    - {fileID: -1793498607, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
+    - {fileID: -1508723344, guid: 872fe17359ceda84a9ca4df03cf71482, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
