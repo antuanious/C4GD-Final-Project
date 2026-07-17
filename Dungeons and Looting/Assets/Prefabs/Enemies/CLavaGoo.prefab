@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2915607583006146783}
   - component: {fileID: 7530323116037849955}
   - component: {fileID: -4707058816258823880}
-  - component: {fileID: 1708438314353331517}
+  - component: {fileID: 5034088845097814645}
   m_Layer: 0
-  m_Name: MiniBoss
+  m_Name: CLavaGoo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,13 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63cc95e3f7738fb48a45a9e04efa919b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: MiniBoss
-  enemyHealth: 750
-  speed: 0.25
-  enemyAttackRate: 4.5
-  damage: 25
+  enemyName: CLavaGoo
+  enemyHealth: 400
+  speed: 1
+  enemyAttackRate: 1.2
+  damage: 45
   enemyHPOG: 0
---- !u!95 &1708438314353331517
+--- !u!95 &5034088845097814645
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -198,7 +198,7 @@ Animator:
   m_GameObject: {fileID: 2443453493379040332}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6f6977e99a8b09b49a8829f6f4d8f5df, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8a4fae5e999149648adbdace84ee80a9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
