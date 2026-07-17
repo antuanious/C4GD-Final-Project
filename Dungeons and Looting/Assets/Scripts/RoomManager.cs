@@ -16,6 +16,7 @@ public class RoomSpawns : MonoBehaviour
 
     private bool hasEnteredPreviously;
     public Canvas HealthBar;
+    public EnemyData enemy;
     public void SpawnInRoom(GameObject targetRoom, GameObject enemy)
     {
         if (targetRoom == null || enemy == null)
@@ -51,13 +52,16 @@ public class RoomSpawns : MonoBehaviour
             targetRoom.transform.position.z
         );
 
-        GameObject q2 = Instantiate(enemy, spawnPosition, Quaternion.identity);
+        GameObject q = Instantiate(enemy, spawnPosition, Quaternion.identity);
 
-        Canvas p2 = Instantiate(HealthBar, q2.transform.position, Quaternion.identity);
+        Canvas p = Instantiate(HealthBar);
 
-        HealthBarFollow follow = p2.GetComponent<HealthBarFollow>();
-        follow.target = q2.transform;
-        
+        HealthBarFollow follow = p.GetComponent<HealthBarFollow>();
+        follow.target = q.transform;
+        follow.enemy = q.GetComponent<EnemyData>(); // or Health
+
+
+
     }
 
     private Bounds GetBounds(GameObject obj)

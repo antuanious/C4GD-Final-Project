@@ -11,8 +11,11 @@ public class EnemyData : MonoBehaviour {
     public float speed;
     public float enemyAttackRate;
     public float damage;
+    public float enemyHPOG;
 
     bool isTakingDmg = false;
+
+
     public void TakeDamage(float damage)
     {
         if (!isTakingDmg)
