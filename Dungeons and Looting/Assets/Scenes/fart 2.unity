@@ -280,7 +280,7 @@ MonoBehaviour:
   numToSpawn: 6
   edgePadding: 0.5
   HealthBar: {fileID: 7711450398960081246, guid: 9618c6cb99189be4a813e1378e80046a, type: 3}
-  enemy: {fileID: 0}
+  bossDead: 0
 --- !u!212 &257051890
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1453,52 +1453,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1491541474
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1491541475}
-  - component: {fileID: 1491541476}
-  m_Layer: 0
-  m_Name: SpawnManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1491541475
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491541474}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6529647, y: 1.8431073, z: -0.027550768}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1491541476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491541474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199ee856169d2de43a856647f33c0563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2443453493379040332, guid: 227cca3d76c9bcf4a8612bd6d260519d, type: 3}
-  hitboxPrefab: {fileID: 1726190821319186138, guid: 07dd23774e949e04d90d0cd957e8775e, type: 3}
 --- !u!1 &1493208861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1616,8 @@ MonoBehaviour:
   endScreen: {fileID: 2078037583}
   mainMenuButton: {fileID: 2011478554}
   respawnButton: {fileID: 999028401}
+  level: 0
+  hasComp: 0
 --- !u!1 &1589354467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1700,7 @@ MonoBehaviour:
   numToSpawn: 3
   edgePadding: 0.5
   HealthBar: {fileID: 7711450398960081246, guid: 9618c6cb99189be4a813e1378e80046a, type: 3}
-  enemy: {fileID: 0}
+  bossDead: 0
 --- !u!212 &1589354470
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1849,7 +1805,7 @@ MonoBehaviour:
   numToSpawn: 8
   edgePadding: 0.5
   HealthBar: {fileID: 7711450398960081246, guid: 9618c6cb99189be4a813e1378e80046a, type: 3}
-  enemy: {fileID: 0}
+  bossDead: 0
 --- !u!212 &1606326290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2439,7 +2395,7 @@ MonoBehaviour:
   numToSpawn: 1
   edgePadding: 0.5
   HealthBar: {fileID: 7711450398960081246, guid: 9618c6cb99189be4a813e1378e80046a, type: 3}
-  enemy: {fileID: 0}
+  bossDead: 0
 --- !u!212 &1901394180
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29178,7 +29134,6 @@ SceneRoots:
   - {fileID: 1644296410}
   - {fileID: 1493208863}
   - {fileID: 414974722}
-  - {fileID: 1491541475}
   - {fileID: 1606326291}
   - {fileID: 257051891}
   - {fileID: 1589354471}
