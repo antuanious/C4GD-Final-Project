@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2915607583006146783}
   - component: {fileID: 7530323116037849955}
   - component: {fileID: -4707058816258823880}
+  - component: {fileID: 7180201058179659705}
   m_Layer: 0
   m_Name: RunnerZombie
   m_TagString: Enemy
@@ -186,3 +187,24 @@ MonoBehaviour:
   speed: 2
   enemyAttackRate: 1.6
   damage: 10
+--- !u!95 &7180201058179659705
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2443453493379040332}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0714e80ced56c0f40a650df5ad5396e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
