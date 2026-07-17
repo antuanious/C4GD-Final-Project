@@ -28,6 +28,7 @@ public class GameUIHandler : MonoBehaviour
     {
         if (bossDead)
         {
+            
             for(int i = 0; i < LevelSelect.completedLevels.Length; i++)
             {
                 if(level == LevelSelect.completedLevels[i])
@@ -40,6 +41,7 @@ public class GameUIHandler : MonoBehaviour
             {
                 LevelSelect.completedLevels.SetValue(level, level - 1);
             }
+            MainMenuReturn();
         }
     }
     public void EnableEndScreen()
