@@ -16,7 +16,6 @@ public class EnemyAI : MonoBehaviour
     public float hitboxLifetime = 0.5f;  // seconds before the spawned hitbox is auto-destroyed
     private float attackTimer = 0f;
     public bool isFinalBoss = false;
-
     Animator anim;
 
     void Start()
@@ -25,11 +24,13 @@ public class EnemyAI : MonoBehaviour
         enemy = GetComponent<EnemyData>();
         attackTimer = 0f;
         anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (PlayerManager.instance != null)
         {
             Vector2 dir = (Vector2)PlayerManager.instance.transform.position - (Vector2)transform.position;
@@ -75,6 +76,12 @@ public class EnemyAI : MonoBehaviour
             Destroy(hitbox, hitboxLifetime);
         }
     }
+    private void OnDestroy()
+    {
+        if (isFinalBoss)
+        {
+            GameUIHandler.bossDead = true;
+        }
+    }
 
-    
 }

@@ -16,7 +16,8 @@ public class RoomSpawns : MonoBehaviour
 
     private bool hasEnteredPreviously;
     public Canvas HealthBar;
-    public EnemyData enemy;
+
+    public bool bossDead = false;
     public void SpawnInRoom(GameObject targetRoom, GameObject enemy)
     {
         if (targetRoom == null || enemy == null)

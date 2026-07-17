@@ -8,6 +8,7 @@ public class LevelSelect : MonoBehaviour
 {
 
     public Button Level1, Level2, Level3;
+    public static int[] completedLevels = new int[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +25,30 @@ public class LevelSelect : MonoBehaviour
 
     public void SwitchScene1()
     {
-        SceneManager.LoadScene("fart");
+        SceneManager.LoadScene("fart 1");
     }
     public void SwitchScene2()
     {
-        SceneManager.LoadScene("Level 2");
+        if (completedLevels[0] != 0)
+        {
+            SceneManager.LoadScene("fart 2");
+        }
+        else
+        {
+            print("NOT GOOD ENOUGH LOSER");
+        }
+        
     }
     public void SwitchScene3()
     {
-        SceneManager.LoadScene("Level 3");
+        if (completedLevels[1] != 0)
+        {
+            SceneManager.LoadScene("fart 3");
+        }
+        else
+        {
+            print("NOT GOOD ENOUGH LOSER");
+        }
+        
     }
 }
